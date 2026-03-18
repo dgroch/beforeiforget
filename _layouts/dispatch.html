@@ -15,16 +15,44 @@ layout: default
       </time>
       {% if page.author %}
         • <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">{{ page.author }}</span></span>
-      {% endif %}</p>
+      {% endif %}
+    </p>
   </header>
 
   <div class="post-content e-content" itemprop="articleBody">
     {{ content }}
   </div>
 
-  {% if site.disqus.shortname %}
-    {% include disqus_comments.html %}
-  {% endif %}
+  <nav class="post-nav">
+    {% assign dispatches = site.dispatches | sort: 'date' %}
+    {% for dispatch in dispatches %}
+      {% if dispatch.url == page.url %}
+        {% assign current_index = forloop.index0 %}
+        {% assign prev_index = current_index | minus: 1 %}
+        {% assign next_index = current_index | plus: 1 %}
+        
+        {% if prev_index >= 0 %}
+          {% assign prev_dispatch = dispatches[prev_index] %}
+          <a href="{{ prev_dispatch.url | relative_url }}" class="prev">
+            <span class="post-nav-label">Previous</span>
+            {{ prev_dispatch.title }}
+          </a>
+        {% else %}
+          <span></span>
+        {% endif %}
+        
+        {% if next_index < dispatches.size %}
+          {% assign next_dispatch = dispatches[next_index] %}
+          <a href="{{ next_dispatch.url | relative_url }}" class="next">
+            <span class="post-nav-label">Next</span>
+            {{ next_dispatch.title }}
+          </a>
+        {% else %}
+          <span></span>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  </nav>
 
   <a class="u-url" href="{{ page.url | relative_url }}" hidden></a>
 </article>
