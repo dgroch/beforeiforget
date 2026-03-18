@@ -9,7 +9,7 @@ title: Before I Forget
   <p class="site-description">{{ site.description }}</p>
   
   <ul class="post-list">
-    {% assign sorted_dispatches = site.dispatches | sort: 'date' %}
+    {% assign sorted_dispatches = site.dispatches | sort: 'date' | reverse %}
     {% for dispatch in sorted_dispatches %}
       <li>
         <span class="post-meta">{{ dispatch.date | date: "%B %d, %Y" }}</span>
