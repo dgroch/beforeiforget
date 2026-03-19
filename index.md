@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Before I Forget
+title: Home
 ---
 
 <div class="home">
