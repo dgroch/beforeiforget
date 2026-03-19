@@ -8,10 +8,10 @@ title: Home
   
   <p class="site-description">{{ site.description }}</p>
 
-  <p class="reading-note"><em>New here? Start at the top — the dispatches build on each other. They are presented in the order they were written.</em></p>
+  <p class="reading-note"><em>New here? <a href="{{ site.dispatches | sort: 'dispatch_number' | first | map: 'url' | relative_url }}">Start with Dispatch 1</a> — they build on each other.</em></p>
   
   <ul class="post-list">
-    {% assign sorted_dispatches = site.dispatches | sort: 'dispatch_number' %}
+    {% assign sorted_dispatches = site.dispatches | sort: 'dispatch_number' | reverse %}
     {% for dispatch in sorted_dispatches %}
       <li>
         <span class="post-meta">
