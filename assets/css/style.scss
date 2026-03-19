@@ -284,6 +284,32 @@ body {
   padding-left: 1rem;
 }
 
+/* Series context banner (per-dispatch, for direct-URL arrivals) */
+.dispatch-series-banner {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+  background: transparent;
+  border-left: 2px solid var(--color-border);
+  padding: 0.6rem 1rem;
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dispatch-series-banner a {
+  color: var(--color-text-light);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.dispatch-series-banner a:hover {
+  color: var(--color-text);
+}
+
 /* Dispatch Header */
 .post-header {
   margin-bottom: 3rem;

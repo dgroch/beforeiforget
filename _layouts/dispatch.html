@@ -4,6 +4,20 @@ layout: default
 
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
+  {% assign all_dispatches = site.dispatches | sort: 'dispatch_number' %}
+  {% assign total = all_dispatches | size %}
+  {% if page.dispatch_number and page.dispatch_number > 1 %}
+  <div class="dispatch-series-banner">
+    <span>Dispatch No. {{ page.dispatch_number }} of {{ total }} in <em>Before I Forget</em></span>
+    <a href="{{ '/' | relative_url }}">Start from the beginning →</a>
+  </div>
+  {% elsif page.dispatch_number == 1 %}
+  <div class="dispatch-series-banner">
+    <span>Dispatch No. 1 of {{ total }} in <em>Before I Forget</em> — you're at the beginning.</span>
+    <a href="{{ '/' | relative_url }}">See all dispatches →</a>
+  </div>
+  {% endif %}
+
   <header class="post-header">
     <h1 class="post-title p-name" itemprop="name headline">{{ page.title | escape }}</h1>
     {% if page.subtitle %}
